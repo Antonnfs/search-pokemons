@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "@emotion/styled"; 
+import Button from '@mui/material/Button';
 
 import "./App.css";
 
@@ -8,8 +10,8 @@ const PokemonRow = ( { pokemon, onSelect } ) => (
     <td>{pokemon.name.english}</td>
     <td>{pokemon.type.join(",  ")}</td>
     <td>
-      <button onClick={() => onSelect(pokemon)}
-      >Select!</button>
+      <Button variant="outlined" onClick={() => onSelect(pokemon)}
+      >Select!</Button>
     </td>
   </tr>
 )
@@ -52,34 +54,42 @@ PokemonInfo.propTypes = {
   }),
 }
 
+const Title = styled.h1`
+  text-align: center;
+`;
+const TwoColumnLayout = styled.div`
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-column-gap: 1rem;
+`;
+const Container = styled.div`
+  margin: auto;
+  width: 800px;
+  padding-top: 1rem;
+`;
+const Input = styled.input`
+  width: 100%;
+  font-size: x-large;
+  padding: 0.2rem;
+`;
+
 function App() {
   const [filter, filterSet] = React.useState("");
   const [pokemon, pokemonSet] = React.useState([]);
   const [selectedItem, selectedItemSet] = React.useState(null);
 
   React.useEffect(() => {
-    fetch("http://localhost:3001/search-pokemons/pokemon.json")
+    fetch("https://antonnfs.github.io/search-pokemons/pokemon.json")
     .then(resp => resp.json())
     .then(data => pokemonSet(data));
   }, []);
 
   return (
-    <div
-      style={{
-        margin: "auto",
-        width: 800,
-        paddingTop: "1rem",
-      }}
-    >
-      <h1 className="title">Pokemon Search</h1>
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "70% 30%",
-        gridColumnGap: "1rem", 
-      }}
-      >
+    <Container>
+      <Title>Pokemon Search</Title>
+      <TwoColumnLayout>
         <div>
-          <input
+          <Input
             value={filter}
             onChange={(evt) => filterSet(evt.target.value)}
           />
@@ -92,21 +102,22 @@ function App() {
             </thead>
             <tbody>
               {pokemon.filter((pokemon) => 
-              pokemon.name.english.toLowerCase().includes(filter.toLowerCase())).slice(0, 20).map(pokemon => ( 
-                <PokemonRow 
-                pokemon={pokemon} 
-                key={pokemon.id} 
-                onSelect={(pokemon) => selectedItemSet(pokemon)}
-                />
-              ))}
+                pokemon.name.english.toLowerCase().includes(filter.toLowerCase())).slice(0, 20).map(pokemon => ( 
+                  <PokemonRow 
+                    pokemon={pokemon} 
+                    key={pokemon.id} 
+                    onSelect={(pokemon) => selectedItemSet(pokemon)}
+                  />
+                )
+              )}
             </tbody>
           </table>
         </div>
         {selectedItem && (
           <PokemonInfo {... selectedItem}/>
         )}
-      </div>
-    </div>
+      </TwoColumnLayout>
+    </Container>
   );
 }
 
