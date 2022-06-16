@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/search-pokemons/static/css/main.fdef11c7.css",
-    "main.js": "/search-pokemons/static/js/main.077d69ed.js",
+    "main.js": "/search-pokemons/static/js/main.d70d2034.js",
     "static/js/787.b3393667.chunk.js": "/search-pokemons/static/js/787.b3393667.chunk.js",
     "index.html": "/search-pokemons/index.html",
     "main.fdef11c7.css.map": "/search-pokemons/static/css/main.fdef11c7.css.map",
-    "main.077d69ed.js.map": "/search-pokemons/static/js/main.077d69ed.js.map",
+    "main.d70d2034.js.map": "/search-pokemons/static/js/main.d70d2034.js.map",
     "787.b3393667.chunk.js.map": "/search-pokemons/static/js/787.b3393667.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fdef11c7.css",
-    "static/js/main.077d69ed.js"
+    "static/js/main.d70d2034.js"
   ]
 }
