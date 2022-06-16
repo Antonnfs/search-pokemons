@@ -5,7 +5,7 @@ import PokemonContext from "../PokemonContext.js";
 const PokemonInfo = () => {
 	const { selectedPokemon } = useContext(PokemonContext);
 	return selectedPokemon ? (
-		<div>
+		<div className="pokemon-info">
 			<h2>{selectedPokemon.name.english}</h2>
 			<table>
 				<tbody>

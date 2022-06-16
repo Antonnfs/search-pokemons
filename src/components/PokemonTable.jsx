@@ -13,7 +13,6 @@ const PokemonTable = () => {
 				</tr>
 			</thead>
 			<tbody>
-				
 				{pokemon
 					.filter((pokemon) =>
 						pokemon.name.english.toLowerCase().includes(filter.toLowerCase())

@@ -2,3 +2,7 @@ th {
   text-align: left;
   font-size: x-large;
 }
+.pokemon-info {
+  margin-top: 23px;
+  padding-left: 50px;
+}
